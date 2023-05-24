@@ -95,6 +95,8 @@
 
             deleteButton.type="button";
             deleteButton.value='Delete';
+
+          
             deleteButton.onclick=()=>{
               localStorage.removeItem(obj.email);
               parentElement.removeChild(childElement);
@@ -102,15 +104,27 @@
             }
             childElement.appendChild(deleteButton);
             parentElement.appendChild(childElement);
+
+
+            const editButton=document.createElement('input');
+            editButton.type="button";
+             editButton.value='Edit';
+            
+            editButton.onclick=()=>{
+              localStorage.removeItem(obj.email);
+              parentElement.removeChild(childElement);
+              document.getElementById('name').value=obj.name;
+              document.getElementById('email').value=obj.email;
+              document.getElementById('phonenum').value=obj.phone;
+
+            }
+            childElement.appendChild(editButton);
+            parentElement.appendChild(childElement);
               
        
           }
 
           
-          function deleteitem(emaill)
-          {
-            localStorage.removeItem(emaill);
-          }
           
     </script>
   </body>
