@@ -73,6 +73,9 @@
 
              // localStorage.setItem(obj.email,JSON.stringify(obj));
              //ShowonScreen(obj);
+           
+
+
         }
          
 
@@ -93,8 +96,16 @@
         // localStorage.setItem("myObj", myObj1_serialized);
         // let myObj1_deserialized= JSON.parse(localStorage.getItem("myObj"));
         // console.log(myObj1_deserialized);
-        
+        const deleteFromCrud=(postIdToDelete)=>{
 
+              axios.delete(`https://crudcrud.com/api/41d8eb2de34d4b55ac340443fa806cbd/appointmentData/${postIdToDelete}`)
+               .then((response)=>{
+                  //console.log(response)
+                  }).catch((err)=>{
+                  document.body.innerHTML= document.body.innerHTML+ "<h4>Something Went Wrong</h4>"
+              console.log(err)
+                })
+                  }
         window.addEventListener("DOMContentLoaded",()=>{
 
           axios.get("https://crudcrud.com/api/41d8eb2de34d4b55ac340443fa806cbd/appointmentData")
@@ -119,6 +130,7 @@
           //   const userDetailsString= localStorageObj[key];
           //   const userDetailsObj= JSON.parse(userDetailsString);
           //   ShowonScreen(userDetailsObj)
+
           }
           )
 
@@ -136,8 +148,9 @@
             deleteButton.value='Delete';
 
           
-            deleteButton.onclick=()=>{
-              localStorage.removeItem(obj.email);
+            deleteButton.onclick=(e)=>{
+              deleteFromCrud(obj._id)
+              //localStorage.removeItem(obj.email);
               parentElement.removeChild(childElement);
 
             }
@@ -164,6 +177,7 @@
           }
 
           
+
           
     </script>
   </body>
