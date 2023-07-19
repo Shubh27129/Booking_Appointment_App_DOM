@@ -40,6 +40,7 @@
       </ul> -->
     </section>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
 
     <script>
          function StoreLocalStorage(event)
@@ -58,11 +59,20 @@
               phone
               
             }
+             
 
-              localStorage.setItem(obj.email,JSON.stringify(obj));
-            
+            axios.post("https://crudcrud.com/api/41d8eb2de34d4b55ac340443fa806cbd/appointmentData",obj)
+            .then((response)=>{
+              ShowonScreen(response.data)
+              //console.log(response)
+            }).catch((err)=>{
+              document.body.innerHTML= document.body.innerHTML+ "<h4>Something Went Wrong</h4>"
+              console.log(err)
+            })
 
-             ShowonScreen(obj);
+
+             // localStorage.setItem(obj.email,JSON.stringify(obj));
+             //ShowonScreen(obj);
         }
          
 
