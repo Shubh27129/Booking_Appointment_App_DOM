@@ -159,7 +159,7 @@
           {
             const parentElement=document.getElementById('users');
             const childElement= document.createElement('li');
-            childElement.textContent=obj.name+ '-'+obj.email+ '-'+obj.phone;
+            childElement.textContent=obj.userDetails.name+ '-'+obj.userDetails.email+ '-'+obj.userDetails.phone;
             
             const deleteButton=document.createElement('input');
 
@@ -168,7 +168,7 @@
 
           
             deleteButton.onclick=(e)=>{
-              deleteFromCrud(obj.id)
+              deleteFromCrud(obj.userDetails.id)
               //localStorage.removeItem(obj.email);
               parentElement.removeChild(childElement);
 
